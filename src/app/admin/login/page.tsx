@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -95,7 +95,9 @@ export default function AdminLoginPage() {
         </form>
 
         <p className="mt-6 text-center text-xs text-muted">
-          <a href="/" className="transition-colors hover:text-foreground">← Back to portfolio</a>
+          <Link href="/" className="transition-colors hover:text-foreground">
+         ← Back to portfolio
+          </Link>
         </p>
       </div>
     </div>
