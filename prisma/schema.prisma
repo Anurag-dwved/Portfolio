@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model Admin {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   email     String   @unique
   password  String
   name      String   @default("Admin")
@@ -17,25 +17,25 @@ model Admin {
 }
 
 model Profile {
-  id          String   @id @default(cuid())
-  name        String
-  title       String
-  tagline     String
-  bio         String
-  email       String
-  phone       String?
-  location    String?
-  github      String?
-  linkedin    String?
-  twitter     String?
-  resumeUrl   String?
-  avatarUrl   String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  title     String
+  tagline   String
+  bio       String
+  email     String
+  phone     String?
+  location  String?
+  github    String?
+  linkedin  String?
+  twitter   String?
+  resumeUrl String?
+  avatarUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Skill {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   category  String
   level     Int      @default(80)
@@ -46,36 +46,36 @@ model Skill {
 }
 
 model Project {
-  id           String   @id @default(cuid())
-  title        String
-  description  String
-  longDesc     String?
-  imageUrl     String?
-  techStack    String
-  liveUrl      String?
-  githubUrl    String?
-  featured     Boolean  @default(false)
-  order        Int      @default(0)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  longDesc    String?
+  imageUrl    String?
+  techStack   String
+  liveUrl     String?
+  githubUrl   String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Certificate {
-  id           String   @id @default(cuid())
-  title        String
-  issuer       String
-  issueDate    String
-  expiryDate   String?
-  credentialId String?
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  issuer        String
+  issueDate     String
+  expiryDate    String?
+  credentialId  String?
   credentialUrl String?
-  imageUrl     String?
-  order        Int      @default(0)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  imageUrl      String?
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model Experience {
-  id          String   @id @default(cuid())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   company     String
   role        String
   location    String?
